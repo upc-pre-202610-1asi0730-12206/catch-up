@@ -1,0 +1,17 @@
+{
+  "read-more": "Leer más",
+  "unavailable-news": "Servicio de noticias no disponible en este momento.",
+  "authoring-phrase": {
+    "intro": "Hecho con",
+    "use": "utilizando",
+    "author": "por el Equipo de Desarrollo {brand}"
+  },
+  "article": {
+    "share": "Compartir",
+    "copy-to-clipboard": "Copiar al portapapeles"
+  },
+  "footer": {
+    "powered-by": "Contenido proporcionado por",
+    "and": "y"
+  }
+}
