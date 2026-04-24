@@ -1,0 +1,117 @@
+@startuml
+
+package "news.domain.model" {
+  class Article {
+    - title: string
+    - description: string
+    - url: string
+    - urlToImage: string
+    - publishedAt: Date
+    - source: Source
+    + getFormattedPublishedAt(): string
+  }
+  class Source {
+    - id: string
+    - name: string
+    - description: string
+    - url: string
+    - category: string
+    - language: string
+    - country: string
+    - urlToLogo: string
+  }
+}
+
+package "news.application" {
+  class newsStore
+}
+
+package "news.infrastructure" {
+  class NewsApi {
+    + getSources()
+    + getArticlesForSourceId(sourceId)
+  }
+  class ArticleAssembler {
+    - source
+    + withSource(source)
+    + toEntityFromResource(resource)
+    + toEntitiesFromResponse(response)
+  }
+  class SourceAssembler {
+    + toEntitiesFromResponse(response)
+    + toEntityFromResource(resource)
+  }
+}
+
+package "news.presentation.components" {
+  class ArticleItem {
+    - article: Article
+    + shareArticle(): void
+    + tooltipShowed(): void <<event>>
+  }
+  class ArticleList {
+    - articles: Article[]
+  }
+  class SourceItem {
+    - source: Source
+    + emitSourceSelectedEvent(): void
+    + sourceSelected(): void <<event>>
+  }
+  class SourceList {
+    - visible: Boolean
+    - sources: Source[]
+    + emitSourceSelectedEvent(source): void
+    + sourceSelected(): void <<event>>
+  }
+}
+
+package "shared.infrastructure" {
+  class LogoDevApi {
+    + getUrlToLogo(source)
+  }
+}
+
+package "shared.presentation.components" {
+  class FooterContent {
+    ' static content
+  }
+  class LanguageSwitcher {
+    ' binds $i18n.locale
+  }
+  class Layout {
+    - drawerVisible: Boolean
+    - sources
+    - errors
+    - articles
+    - rerenderKey
+    + toggleDrawer(): void
+    + setSource(source): void
+    + onMounted(): void
+  }
+}
+
+class App
+
+' Relationships outside packages
+Article --> Source
+newsStore ..> "news.domain.model.Article" : uses
+newsStore ..> "news.domain.model.Source" : uses
+newsStore ..> "news.infrastructure.NewsApi" : uses
+newsStore ..> "news.infrastructure.ArticleAssembler" : uses
+newsStore ..> "news.infrastructure.SourceAssembler" : uses
+ArticleAssembler ..> "news.domain.model.Article" : creates
+ArticleAssembler ..> SourceAssembler : uses
+SourceAssembler ..> "news.domain.model.Source" : creates
+SourceAssembler ..> "shared.infrastructure.LogoDevApi" : uses
+ArticleList --> ArticleItem : uses
+ArticleItem --> Article : uses
+SourceList --> SourceItem : uses
+SourceItem --> Source : uses
+Layout --> FooterContent : uses
+Layout --> LanguageSwitcher : uses
+Layout --> "news.presentation.components.SourceList" : uses
+Layout --> "news.presentation.components.ArticleList" : uses
+Layout --> newsStore : uses
+App --> Layout : uses
+
+@enduml
