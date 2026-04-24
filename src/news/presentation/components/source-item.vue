@@ -1,8 +1,8 @@
 <script setup lang="js">
-  import {Source} from "../../domain/model/source.entity.js";
-  import {toRefs} from "vue";
+import {Source} from "../../domain/model/source.entity.js";
+import {toRefs} from "vue";
 
-  /**
+/**
    * Presentation component for a single source option.
    *
    * @remarks

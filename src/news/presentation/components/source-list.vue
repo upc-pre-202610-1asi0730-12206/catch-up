@@ -1,9 +1,9 @@
 <script setup lang="js">
-  import {Source} from "../../domain/model/source.entity.js";
-  import SourceItem from "./source-item.vue";
-  import {toRefs} from "vue";
+import {Source} from "../../domain/model/source.entity.js";
+import SourceItem from "./source-item.vue";
+import {toRefs} from "vue";
 
-  /**
+/**
    * Presentation component that displays selectable news sources.
    *
    * @remarks

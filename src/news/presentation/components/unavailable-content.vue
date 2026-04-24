@@ -1,8 +1,8 @@
 <script setup lang="js">
-  import {useI18n} from "vue-i18n";
-  import {toRefs} from "vue";
+import {useI18n} from "vue-i18n";
+import {toRefs} from "vue";
 
-  /**
+/**
    * Presentation fallback component for infrastructure/application errors.
    */
 

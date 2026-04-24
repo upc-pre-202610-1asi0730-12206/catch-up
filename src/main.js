@@ -1,13 +1,11 @@
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import PrimeVue from 'primevue/config';
 import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
 import Material from '@primeuix/themes/material';
 import './style.css'
 import App from './app.vue'
-import {Avatar, Button, Card, Drawer,
-    Image, Menu, Menubar, SelectButton,
-    Toolbar, Tooltip} from "primevue";
+import {Avatar, Button, Card, Drawer, Image, Menu, Menubar, SelectButton, Toolbar, Tooltip} from "primevue";
 import i18n from "./i18n.js";
 
 createApp(App)

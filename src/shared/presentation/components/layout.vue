@@ -1,5 +1,5 @@
 <script setup>
-import {computed, onMounted, onUpdated, ref} from "vue";
+import {computed, onMounted, ref} from "vue";
 import {newsStore} from "../../../news/application/news.store.js";
 import SourceList from "../../../news/presentation/components/source-list.vue";
 import LanguageSwitcher from "./language-switcher.vue";

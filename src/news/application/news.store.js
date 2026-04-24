@@ -1,4 +1,4 @@
-import {computed, reactive} from "vue";
+import {reactive} from "vue";
 import {Source} from "../domain/model/source.entity.js";
 import {NewsApi} from "../infrastructure/news-api.js";
 import {SourceAssembler} from "../infrastructure/source.assembler.js";

@@ -1,4 +1,3 @@
-
 import {SourceAssembler} from "./source.assembler.js";
 import {Article} from "../domain/model/article.entity.js";
 
